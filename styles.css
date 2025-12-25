@@ -1,0 +1,237 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #ffffffa4;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+}
+
+.valentines {
+  position: relative;
+  top: 50px;
+  cursor: pointer;
+  animation: up 3s linear infinite;
+}
+
+@keyframes up {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+}
+
+.envelope {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  background-color: #585252;
+  border-radius: 0 0 15px 15px;
+}
+
+/* Tapa superior del sobre */
+.envelope:before {
+  background-color: #4d4747;
+  content: "";
+  position: absolute;
+  width: 212px;
+  height: 212px;
+  transform: rotate(45deg);
+  top: -105px;
+  left: 44px;
+  border-radius: 30px 0 0 0;
+  z-index: 1;
+}
+
+/* Triángulo izquierdo */
+.envelope::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-top: 100px solid transparent;
+  border-bottom: 100px solid transparent;
+  border-left: 40px solid #3b3a3a;
+  z-index: 4;
+}
+
+/* Triángulo derecho */
+.envelope .right-triangle {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-top: 100px solid transparent;
+  border-bottom: 100px solid transparent;
+  border-right: 40px solid #3b3a3a;
+  z-index: 4;
+}
+
+/* Rectángulo inferior */
+.envelope .bottom-rectangle {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px; /* Mitad de la altura del sobre (200px) */
+  background-color: #716c6c;
+  z-index: 3;
+  border-radius: 0 0 15px 15px;
+}
+
+.card {
+  position: absolute;
+  background-color: #000000;
+  width: 270px;
+  height: 200px;
+  top: -5px;
+  left: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  z-index: 2;
+  transition: transform 0.5s ease-in-out;
+  transform-origin: bottom;
+  transform: translateY(0);
+}
+
+.envelope:hover .card {
+  transform: translateY(-160px) rotate(-5deg);
+}
+
+.card:before {
+  content: "";
+  position: absolute;
+  border: 2px solid #e743a5;
+  border-style: dotted;
+  width: 240px;
+  height: 175px;
+  top: 13px;
+  left: 15px;
+}
+
+.text {
+  position: absolute;
+  width: 100%;
+  top: 35%;
+  transform: translateY(-50%);
+  font-family: "Brush Script MT", cursive;
+  font-size: 20px;
+  text-align: center;
+  line-height: 1.2;
+  color: #e743a5;
+  z-index: 4;
+}
+
+.heart {
+  background-color: #e6139c;
+  display: inline-block;
+  height: 20px;
+  margin: 0 10px;
+  position: relative;
+  transform: rotate(-45deg);
+  width: 20px;
+}
+
+.heart:before,
+.heart:after {
+  content: "";
+  background-color: #e6139c;
+  border-radius: 50%;
+  height: 20px;
+  position: absolute;
+  width: 20px;
+}
+
+.heart:before {
+  top: -10px;
+  left: 0;
+}
+
+.heart:after {
+  left: 10px;
+  top: 0;
+}
+
+.inline-hearts {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.hearts {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(-45deg) translateX(0);
+    opacity: var(--initial-opacity, 1);
+  }
+  50% {
+    transform: translateY(-50vh) rotate(-45deg) translateX(20px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(-45deg) translateX(0);
+    opacity: 0;
+  }
+}
+
+.hearts .heart {
+  position: absolute;
+  animation: float 4s linear infinite;
+}
+
+/* Aseguramos que el contenedor principal no interfiera */
+.container {
+  position: relative;
+  z-index: 2;
+}
+
+.pixel-link {
+  font-family: "Press Start 2P", cursive;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #45aad5;
+  padding: 15px 25px;
+  border-radius: 4px;
+  position: relative;
+  top: 100px;
+  left: 18px;
+  display: inline-block;
+  text-align: center;
+  font-size: 14px;
+  text-shadow: 2px 2px #000000;
+  box-shadow: 0 4px 0 #0c1b6e;
+  transition: all 0.2s ease;
+}
+
+.pixel-link:hover {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #e6139c;
+}
+
+.pixel-link:active {
+  transform: translateY(4px);
+  box-shadow: none;
+}
